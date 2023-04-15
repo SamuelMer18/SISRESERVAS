@@ -1,0 +1,68 @@
+﻿@model SISRESERVAS.Models.usuario;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_nuevolayout.cshtml";
+}
+
+
+<div class="container" style="position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>
+                Iniciar Sesion
+            </h3>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            <form method="post" asp-action="Login" asp-controller="Usuarios">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Correo"></label>
+                    <input type="email" class="form-control" required asp-for="Correo" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Contraseña"></label>
+                    <input type="password" class="form-control" required asp-for="Contraseña" />
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                    <div class=" checkbox mb-3">
+                        <label>
+                            <input type="checkbox" asp-for="MantenerActivo" /> Recordar sesion
+                        </label>
+                    </div>
+                    <div  class ="form-group" >
+                        <input type="submit" value="Ingresar" class="btn btn-primary" style="position:absolute" /><br><br>
+                        <a class="link-danger" asp-action="IniciarRecuperacion" asp-controller="Usuarios">Olvidaste tu Contraseña?</a>
+                    </div><br>
+                    <div class="col-sm-4">
+                        <a class="btn btn-primary" asp-action="Crear" asp-controller="Usuarios">Registrarse</a>
+                    </div><br><br>
+                    @if(TempData["mensaje"] != null)
+{
+                    <div class="alert alert-success" role="alert">
+                        <p>@TempData["mensaje"]</p>
+                    </div>
+                    <script>
+                     setTimeout(function() {
+                     $('.alert').fadeOut('slow');
+                    }, 5000);
+                    </script>
+}
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

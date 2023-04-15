@@ -1,0 +1,55 @@
+﻿@model SISRESERVAS.Models.reserva
+
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Esta seguro que quiere eliminar los siguientes datos?</h3>
+<div>
+    <h4>Datos de la reserva</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdRes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaReserva)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaReserva)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.departamentoIdDep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.departamentoIdDep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.choferIdchofer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.choferIdchofer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.busidbus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.busidbus)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdRes" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-primary">Cancelar y Regresar</a>
+    </form>
+</div>
+

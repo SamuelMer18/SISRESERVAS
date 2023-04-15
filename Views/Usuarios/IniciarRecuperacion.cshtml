@@ -1,0 +1,54 @@
+﻿@model SISRESERVAS.Models.usuario;
+@{
+    ViewData["Title"] = "IniciarRecuperacion";
+    Layout = "~/Views/Shared/_nuevolayout.cshtml";
+}
+
+<div class="container" style="position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>
+                Recuperacion De Contraseña
+            </h3>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            <form method="post" asp-action="Recuperar" asp-controller="Usuarios">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Correo"></label>
+                    <input type="email" class="form-control" required asp-for="Correo" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                    <div  class ="form-group" > <br>
+                        <input type="submit" value="Solicitar" class="btn btn-primary" style="position:absolute" /><br><br>
+                        <a class="btn btn-primary" asp-action="Login" asp-controller="Usuarios">Regresar</a>
+                    </div><br><br>
+                    @if(TempData["mensaje"] != null)
+{
+                    <div class="alert alert-success" role="alert">
+                        <p>@TempData["mensaje"]</p>
+                    </div>
+                    <script>
+                     setTimeout(function() {
+                     $('.alert').fadeOut('slow');
+                    }, 5000);
+                    </script>
+}
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+   }

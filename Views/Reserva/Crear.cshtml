@@ -1,0 +1,56 @@
+﻿@model SISRESERVAS.Models.reserva
+
+@{
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Crear Reservas</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaReserva"></label>
+                    <input asp-for="FechaReserva" class="form-control" />
+                    <span asp-validation-for="FechaReserva" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cantidad"></label>
+                    <input asp-for="Cantidad" class="form-control" />
+                    <span asp-validation-for="Cantidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="choferIdchofer"></label>
+                    <select asp-for="choferIdchofer" class="form-control" asp-items="ViewBag.Idchofer"></select>
+                    <span asp-validation-for="choferIdchofer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="departamentoIdDep"></label>
+                    <select asp-for="departamentoIdDep" class="form-control" asp-items="ViewBag.IdDep"></select>
+                    <span asp-validation-for="departamentoIdDep" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="busidbus"></label>
+                    <select asp-for="busidbus" class="form-control" asp-items="ViewBag.idbus"></select>
+                    <span asp-validation-for="busidbus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
